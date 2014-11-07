@@ -1,4 +1,4 @@
-package plugin.github.kanaami12.autoreload;
+package github.plugin.kanaami12.autoreload;
 
 import java.io.File;
 import java.util.Date;
