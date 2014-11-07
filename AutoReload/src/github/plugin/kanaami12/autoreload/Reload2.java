@@ -8,7 +8,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-
+/**
+ * Main
+ */
 public class Reload2 extends JavaPlugin{
 
     //plugin
