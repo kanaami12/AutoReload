@@ -1,1 +1,3 @@
-AutoReload<br>
+AutoReload
+====
+LICENSE GPL
