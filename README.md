@@ -1,3 +1,3 @@
 AutoReload
 ====
-LICENSE GPL
+LICENSE GPLv3
