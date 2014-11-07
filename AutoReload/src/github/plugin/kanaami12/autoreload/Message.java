@@ -100,9 +100,10 @@ public class Message extends JavaPlugin{
 			if(str.equalsIgnoreCase("true"))
 				message1 = true;
 		}
-		if(i == 4)
+		if(i == 4){
 			if(str.equalsIgnoreCase("true"))
 				message2 = true;
+		}
 
 	}
 
@@ -113,11 +114,10 @@ public class Message extends JavaPlugin{
 	 */
 	  private static boolean checkBeforeReadfile(File file){
 		    if (file.exists()){
-		      if (file.isFile() && file.canRead()){
-		        return true;
-		      }
+		    	if (file.isFile() && file.canRead()){
+		    		return true;
+		    	}
 		    }
-
 		    return false;
-		  }
+	  }
 }
