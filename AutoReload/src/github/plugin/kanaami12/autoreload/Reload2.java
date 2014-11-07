@@ -1,16 +1,14 @@
-package github.plugin.kanaami12.autoreload;
+package plugin.github.kanaami12.autoreload;
 
 import java.io.File;
-import java.sql.Date;
+import java.util.Date;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-/**
- * Main
- */
+
 public class Reload2 extends JavaPlugin{
 
     //plugin
@@ -33,6 +31,8 @@ public class Reload2 extends JavaPlugin{
     public static boolean reloadMode = true;
     //Offmode
     public static boolean OffMode = false;
+    //Task
+    public static int task = 0;
 
     @Override
     public void onEnable(){
@@ -54,7 +54,10 @@ public class Reload2 extends JavaPlugin{
         //'autreload'command
         getCommand("autoreload").setExecutor(new AutoReloadCmd());
 
-        new TimeRunnable().runTaskTimer(this, 20, 20);
+        if(task == 0){
+        	task = 1;
+        	new TimeRunnable().runTaskTimer(this, 20, 20);
+        }
     }
 
       public void onDisable() {
@@ -168,19 +171,20 @@ public class Reload2 extends JavaPlugin{
             //op message
             for(Player player:Bukkit.getServer().getOnlinePlayers())
             {
-                for(Player player2 : Bukkit.getServer().getOnlinePlayers()){
-                    player2.sendMessage("§CFound the update of folder.\n"
+            	if(player.isOp()){
+                    player.sendMessage("§CFound the update of folder.\n"
                             + "§7FileName: " + reloadFile.getName());
-                    return;
-                }
+                    continue;
+            	}
             }
         }
         if(i == 1){
             //op message
-
                 for(Player player2 : Bukkit.getServer().getOnlinePlayers()){
-                    player2.sendMessage("§CReload complete");
-                    return;
+                	if(player2.isOp()){
+                		player2.sendMessage("§CReload complete");
+                    	continue;
+                	}
                 }
             }
         }
@@ -241,6 +245,7 @@ public class Reload2 extends JavaPlugin{
                 final Reload2 Rel = Reload2.plugin;
 
                 Rel.onLoad();
+                task = 0;
                 cancel();
             }
             getFiles2();
