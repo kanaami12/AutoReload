@@ -201,6 +201,8 @@ public class Reload2 extends JavaPlugin{
             if(OffMode){
                 //off mode
                 Day = true;
+                getFiles();
+                return;
             }
             if(!reloadMode){
                 return;
@@ -210,7 +212,11 @@ public class Reload2 extends JavaPlugin{
                 Message.readFile(file);
 
                 if(!newFile){
-                    fileName = "§7FileName: " + reloadFile.getName();
+                	if(reloadFile != null){
+                		fileName = "§7FileName: " + reloadFile.getName();
+                	}else{
+                		fileName = "";
+                	}
 
                 }else if(newFile){
                     //plugins new file
